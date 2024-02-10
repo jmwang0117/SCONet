@@ -1,0 +1,1 @@
+python3 /root/SCONet/network/train.py --cfg /root/SCONet/SSC_configs/routines/SCONet.yaml --dset_root /root/datasets/semantic_kitti

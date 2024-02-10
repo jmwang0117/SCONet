@@ -1,0 +1,1 @@
+python3 /root/SCONet/network/validate.py --weights /root/AGRNav/src/perception/SCONet/weight/weights_epoch_074.pth  --dset_root /root/datasets/semantic_kitti
