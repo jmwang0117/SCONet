@@ -62,8 +62,8 @@ def test(model, dset, _cfg, logger, out_path_root):
     inv_remap_lut = dset.dataset.get_inv_remap_lut()
 
     start_time = time.time()
-    inference_time = 0
-
+    total_inference_time = 0
+    batch_size = 12
     with torch.no_grad():
         for t, (data, indices) in enumerate(dset):
             data = dict_to(data, device, dtype)
@@ -71,7 +71,11 @@ def test(model, dset, _cfg, logger, out_path_root):
             inference_start_time = time.time()
             scores = model(data)
             inference_end_time = time.time()
-            inference_time += (inference_end_time - inference_start_time)
+            inference_time = inference_end_time - inference_start_time
+            total_inference_time += inference_time
+
+            fps = batch_size / inference_time  # Calculate FPS for current file
+            logger.info(f'Inference FPS for current file: {fps:.2f}')
 
             for key in scores:
                 scores[key] = torch.argmax(scores[key], dim=1).data.cpu().numpy()
