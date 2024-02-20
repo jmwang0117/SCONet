@@ -92,10 +92,6 @@ def test(model, dset, _cfg, logger, out_path_root):
                 score.tofile(out_filename)
                 logger.info('=> Sequence {} - File {} saved'.format(sequence, os.path.basename(out_filename)))
                 curr_index += 1
-
-    elapsed_time = time.time() - start_time
-    fps = len(dset) / inference_time
-    logger.info('Inference FPS: {:.2f}'.format(fps))
     return
 
 
