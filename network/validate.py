@@ -17,7 +17,7 @@ from network.common.logger import get_logger
 from network.common.io_tools import dict_to
 from network.common.metrics import Metrics
 import network.common.checkpoint as checkpoint
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"  # Specify the fourth GPU
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"  # Specify the fourth GPU
 
 def parse_args():
   parser = argparse.ArgumentParser(description='SCONet validating')
